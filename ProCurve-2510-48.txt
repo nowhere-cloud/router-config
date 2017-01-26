@@ -13,7 +13,7 @@ vlan 10
    name "Production"
    untagged 5-44
    tagged 45-46,Trk1
-   exit 
+   exit
 vlan 20
    name "Management"
    untagged 1
