@@ -14,7 +14,7 @@ vlan 10
    tagged 43-44,Trk1
    no ip address
    exit
-vlan 20 
+vlan 20
    name "Management"
    untagged 1
    ip address 10.1.123.4 255.255.255.0
