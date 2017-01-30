@@ -1,0 +1,201 @@
+#<header>3Com_DEVICE</header>
+#<mode>ERROR_CHECK_OFF</mode>
+#<stackingDB>0000000000000000</stackingDB>
+#<stackingMac>01_00-18-6e-0d-b0-a2_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+#<stackingMac>00_00-00-00-00-00-00_00</stackingMac>
+# The following key can be used to disable the error checking while the
+# configuration is restored:
+#     #<mode>ERROR_CHECK_OFF</mode>
+# To re-enable error checking use the following key:
+#     #<mode>ERROR_CHECK_ON</mode>
+#
+
+
+#--------------------------------------------------------------
+#  PRODUCT INFORMATION  SECTION
+#--------------------------------------------------------------
+# Unit Number        : 1
+# Description        : 3Com SuperStack 3 Switch 3870 48-port
+# Product Number     : 3CR17451-91
+# MAC Address        : 00:18:6e:0d:b0:a2
+# Serial Number      : Y7EW7EJ0DB0A2
+# Software Version   : 3.00s56
+# Hardware Version   : R01
+#
+
+#--------------------------------------------------------------
+#  BRIDGE VLAN  SECTION
+#--------------------------------------------------------------
+bridge vlan create 10 Production
+
+#--------------------------------------------------------------
+#  BRIDGE VLAN MODIFY  SECTION
+#--------------------------------------------------------------
+bridge vlan modify name 1 "VLAN 1"
+bridge vlan modify addPort 10 1:5-42 untagged
+bridge vlan modify addPort 10 1:43-48 tagged
+bridge vlan modify addPort 20 1:1 untagged
+bridge vlan modify addPort 20 1:2-4 tagged
+
+#--------------------------------------------------------------
+#  BRIDGE PORT  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PHYSICALINTERFACE ETHERNET  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP INTERFACE  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP ARP  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP PROXYARP  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP RIP  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP ROUTE  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  PROTOCOL IP UDPHELPER  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE SPANNINGTREE  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE PORT MSTPRIORITY  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE SPANNINGTREE STPSTATE  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE MULITICASTFILTER IGMP  SECTION
+#--------------------------------------------------------------
+bridge multicastFilter igmp queryMode enable
+
+#--------------------------------------------------------------
+#  BRIDGE MULTICASTFILTER ROUTERPORT  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE BROADCASTSTORMCONTROL  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE JUMBOFRAMES  SECTION
+#--------------------------------------------------------------
+bridge jumboFrames enable
+
+#--------------------------------------------------------------
+#  FEATURE ROVINGANALYSIS  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY RADIUS  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY DEVICE AUTHENTICATION  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY DEVICE USER  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY DEVICE HTTPS  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY DEVICE TRUSTEDIPHOST  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY NETWORK ACCESS  SECTION
+#--------------------------------------------------------------
+security network access systemMode enable
+
+#--------------------------------------------------------------
+#  SYSTEM MANAGEMENT  SECTION
+#--------------------------------------------------------------
+system management name dc-3ComSuperStack
+
+#--------------------------------------------------------------
+#  SYSTEM MANAGEMENT SNMP TRAP  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  TRAFFICMANAGEMENT RATELIMITING  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  TRAFFICMANAGEMENT COS  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  TRAFFICMANAGEMENT QOS  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  SECURITY NETWORK ACCESS ACL MASKCONFIG  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE LINKAGGREGATION  SECTION
+#--------------------------------------------------------------
+bridge port lacpState 1:45 enable
+bridge port lacpState 1:46 enable
+bridge port lacpState 1:47 enable
+bridge port lacpState 1:48 enable
+bridge linkaggregation modify addPort AL1 1:45
+bridge linkaggregation modify addPort AL1 1:46
+bridge linkaggregation modify addPort AL1 1:47
+bridge linkaggregation modify addPort AL1 1:48
+
+#--------------------------------------------------------------
+#  BRIDGE PORT MSTPCOST  SECTION
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+#  BRIDGE PORT STPCOST  SECTION
+#--------------------------------------------------------------
+
+#
+# End of automatically generated configuration.
+# You can enter further commands, if they are supported on the product, after these comments:
+#
+# Note: If you restore RADIUS configuration you can add the shared secret below.
+#       You can also change the authentication mode to RADIUS with the following
+#       command:
+#  security authentication systemMode RADIUS yes yes
+#
+# Examples:
+#  physical ethernet portCapabilities 1:1 10h
+#  protocol ip basicConfig manual 10.16.25.26 255.255.255.0 10.16.25.250
+#  security device user create "my name" monitor "my password" "my password"
+#  security device user modify admin "secret" "secret"
+#  security radius sharedSecret "this is my shared secret"
+#  system management snmp community "private" "public"
+
+
+
+#----------------- End of configuration file ------------------

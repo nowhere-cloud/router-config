@@ -1,23 +1,35 @@
 ; J9147A Configuration Editor; Created on release #W.14.38
 
-hostname "dc-hpProCurve-1"
-trunk 45-48 Trk1 LACP
-vlan 1
-   name "DEFAULT_VLAN"
-   tagged 2-4
-   no untagged 1,5-44,Trk1
-   no ip address
-   exit
-vlan 10
-   name "Production"
-   untagged 5-42
-   tagged 43-44,Trk1
-   no ip address
-   exit
-vlan 20
-   name "Management"
-   untagged 1
-   ip address 10.1.123.4 255.255.255.0
-   tagged 2-4
-   exit
+hostname "dc-hpProCurve-1" 
+module 1 type J9147A 
+trunk 45-48 Trk1 LACP 
+vlan 1 
+   name "DEFAULT_VLAN" 
+   tagged 2-4 
+   no untagged 1,5-44,Trk1 
+   no ip address 
+   exit 
+vlan 10 
+   name "Production" 
+   untagged 5-42 
+   tagged 43-44,Trk1 
+   no ip address 
+   exit 
+vlan 20 
+   name "Management" 
+   untagged 1 
+   ip address 10.1.123.4 255.255.255.0 
+   tagged 2-4 
+   exit 
+fault-finder bad-driver sensitivity high 
+fault-finder bad-transceiver sensitivity high 
+fault-finder bad-cable sensitivity high 
+fault-finder too-long-cable sensitivity high 
+fault-finder over-bandwidth sensitivity high 
+fault-finder broadcast-storm sensitivity high 
+fault-finder loss-of-link sensitivity high 
+fault-finder duplex-mismatch-HDx sensitivity high 
+fault-finder duplex-mismatch-FDx sensitivity high 
+snmp-server community "public" unrestricted
 spanning-tree Trk1 priority 4
+

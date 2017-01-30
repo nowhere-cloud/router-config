@@ -1,3 +1,4 @@
+
 !
 version 12.2
 no service pad
@@ -7,6 +8,7 @@ no service password-encryption
 !
 hostname ext-Csco3560-2
 !
+enable secret 5 $1$Fvwv$zX41wygj8KRQBqSyZ6pmj.
 !
 no aaa new-model
 ip subnet-zero
@@ -31,6 +33,7 @@ interface Port-channel1
 interface FastEthernet0/1
  switchport access vlan 20
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/2
  switchport trunk encapsulation dot1q
@@ -133,6 +136,10 @@ interface FastEthernet0/24
  switchport mode trunk
  channel-group 1 mode active
 !
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
 interface Vlan1
  no ip address
 !
@@ -145,8 +152,6 @@ interface Vlan20
 ip classless
 ip http server
 ip http secure-server
-ip http authentication enable
-enable secret cisco
 !
 !
 !
@@ -161,5 +166,3 @@ line vty 5 15
  no login
 !
 end
-
-
