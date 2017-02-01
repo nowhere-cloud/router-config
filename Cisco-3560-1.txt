@@ -42,6 +42,8 @@ interface FastEthernet0/2
 !
 interface FastEthernet0/3
  switchport access vlan 20
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,20
  switchport mode access
  spanning-tree portfast
 !
@@ -134,18 +136,20 @@ interface FastEthernet0/24
  switchport trunk allowed vlan 10
  switchport mode trunk
  channel-group 1 mode active
- !
- interface GigabitEthernet0/1
-  shutdown
- !
- interface GigabitEthernet0/2
-  shutdown
- !
+!
+interface GigabitEthernet0/1
+ shutdown
+!
+interface GigabitEthernet0/2
+ shutdown
+!
 interface Vlan1
  no ip address
 !
 interface Vlan10
  no ip address
+ standby version 2
+ standby 2 ip 10.1.124.3
 !
 interface Vlan20
  ip address 10.1.123.1 255.255.255.0
@@ -155,12 +159,15 @@ ip http server
 ip http secure-server
 !
 !
+access-list 1 permit 10.1.123.0 0.0.0.255
+access-list 1 deny   any
 !
 control-plane
 !
 !
 line con 0
 line vty 0 4
+ access-class 1 in
  password cisco
  login
 line vty 5 15
