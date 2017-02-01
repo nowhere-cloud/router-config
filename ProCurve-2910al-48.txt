@@ -31,4 +31,5 @@ fault-finder loss-of-link sensitivity high
 fault-finder duplex-mismatch-HDx sensitivity high
 fault-finder duplex-mismatch-FDx sensitivity high
 snmp-server community "public" unrestricted
+spanning-tree
 spanning-tree Trk1 priority 4

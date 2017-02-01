@@ -1,0 +1,128 @@
+
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ex-Csco2811-1
+!
+boot-start-marker
+boot-end-marker
+!
+logging message-counter syslog
+enable secret 5 $1$B8UI$cZpxmtaGVs2HN2hDwXOUw.
+!
+no aaa new-model
+memory-size iomem 15
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.0.221 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 10.1.124.1 255.255.255.0
+ duplex auto
+ speed auto
+ vrrp 10 description external
+ vrrp 10 ip 10.1.124.3
+ vrrp 10 authentication cisco
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 125000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 125000
+!
+interface FastEthernet0/1/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end
