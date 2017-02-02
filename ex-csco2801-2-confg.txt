@@ -19,9 +19,12 @@ ip cef
 !
 !
 ip auth-proxy max-nodata-conns 3
+ip admission max-nodata-conns 3
 !
 !
 voice-card 0
+!
+!
 !
 !
 !
@@ -63,6 +66,11 @@ interface Serial0/2/0
  shutdown
  clock rate 2000000
 !
+interface Serial0/2/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
 ip forward-protocol nd
 ip route 0.0.0.0 0.0.0.0 192.168.0.1
 !
@@ -71,7 +79,6 @@ no ip http server
 no ip http secure-server
 ip nat inside source list 2 interface FastEthernet0/0 overload
 !
-access-list 2 permit 10.1.123.0 0.0.0.255
 access-list 2 permit 10.1.124.0 0.0.0.255
 !
 !
@@ -90,7 +97,8 @@ control-plane
 line con 0
 line aux 0
 line vty 0 4
- no login
+ password cisco
+ login
 !
 scheduler allocate 20000 1000
 end

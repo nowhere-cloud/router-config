@@ -107,6 +107,7 @@ no ip http server
 no ip http secure-server
 !
 !
+ip nat source static tcp 10.1.123.7 443 192.168.0.221 7443 extendable
 ip nat inside source list 2 interface FastEthernet0/0 overload
 !
 access-list 1 permit 10.1.123.0 0.0.0.255
