@@ -148,8 +148,6 @@ interface Vlan1
 !
 interface Vlan10
  no ip address
- standby version 2
- standby 2 ip 10.1.124.3
 !
 interface Vlan20
  ip address 10.1.123.1 255.255.255.0
