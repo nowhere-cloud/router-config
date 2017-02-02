@@ -42,8 +42,6 @@ interface FastEthernet0/2
 !
 interface FastEthernet0/3
  switchport access vlan 20
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1,20
  switchport mode access
  spanning-tree portfast
 !
