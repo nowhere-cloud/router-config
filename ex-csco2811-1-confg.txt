@@ -58,7 +58,7 @@ voice-card 0
 archive
  log config
   hidekeys
-! 
+!
 !
 !
 !
@@ -122,11 +122,9 @@ control-plane
 !
 line con 0
 line aux 0
-line vty 0
+line vty 0 4
  access-class 1 in
  password cisco
- login
-line vty 1 4
  login
 !
 scheduler allocate 20000 1000
