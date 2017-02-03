@@ -116,7 +116,9 @@ interface FastEthernet0/20
 !
 interface FastEthernet0/21
  switchport access vlan 10
- switchport mode access
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
 !
 interface FastEthernet0/22
  switchport trunk encapsulation dot1q
@@ -148,7 +150,7 @@ interface Vlan10
  no ip address
 !
 interface Vlan20
- ip address 10.1.123.1 255.255.255.0
+ ip address 10.1.123.4 255.255.255.0
 !
 ip classless
 ip http server

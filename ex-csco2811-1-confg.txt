@@ -58,7 +58,7 @@ voice-card 0
 archive
  log config
   hidekeys
-!
+! 
 !
 !
 !
@@ -68,21 +68,34 @@ archive
 !
 !
 interface FastEthernet0/0
- ip address 192.168.0.221 255.255.255.0
+ ip address 192.168.0.215 255.255.255.0
  ip nat outside
  ip virtual-reassembly
  duplex auto
  speed auto
 !
 interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.10
+ encapsulation dot1Q 10
  ip address 10.1.124.1 255.255.255.0
  ip nat inside
  ip virtual-reassembly
- duplex auto
- speed auto
  vrrp 10 description external
  vrrp 10 ip 10.1.124.3
  vrrp 10 authentication cisco
+!
+interface FastEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 10.1.123.1 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly
+ vrrp 20 description management
+ vrrp 20 ip 10.1.123.3
+ vrrp 20 authentication cisco
 !
 interface Serial0/0/0
  no ip address
@@ -95,9 +108,8 @@ interface Serial0/0/1
  clock rate 125000
 !
 interface FastEthernet0/1/0
- ip address 10.1.123.3 255.255.255.0
- ip nat inside
- ip virtual-reassembly
+ no ip address
+ shutdown
  duplex auto
  speed auto
 !
@@ -107,9 +119,10 @@ no ip http server
 no ip http secure-server
 !
 !
-ip nat inside source static tcp 10.1.123.7 22 interface FastEthernet0/0 7022
-ip nat inside source static tcp 10.1.123.7 443 interface FastEthernet0/0 7443
 ip nat inside source list 2 interface FastEthernet0/0 overload
+ip nat inside source static tcp 10.1.123.9 443 interface FastEthernet0/0 9443
+ip nat inside source static tcp 10.1.123.8 443 interface FastEthernet0/0 8443
+ip nat inside source static tcp 10.1.123.9 22 interface FastEthernet0/0 9022
 !
 access-list 1 permit 10.1.123.0 0.0.0.255
 access-list 1 deny   any

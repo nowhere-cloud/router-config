@@ -18,7 +18,7 @@ vlan 10
 vlan 20
    name "Management"
    untagged 1,3
-   ip address 10.1.123.4 255.255.255.0
+   ip address 10.1.123.6 255.255.255.0
    tagged 2,4
    exit
 fault-finder bad-driver sensitivity high
