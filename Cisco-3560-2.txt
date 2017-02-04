@@ -30,6 +30,11 @@ interface Port-channel1
  switchport trunk allowed vlan 10
  switchport mode trunk
 !
+interface Port-channel2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
 interface FastEthernet0/1
  switchport access vlan 20
  switchport mode access
@@ -53,77 +58,95 @@ interface FastEthernet0/4
 interface FastEthernet0/5
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/6
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/7
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/8
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/9
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/10
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/11
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/12
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/13
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/14
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/15
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/16
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/17
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/18
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/19
  switchport access vlan 10
  switchport mode access
+ spanning-tree portfast
 !
 interface FastEthernet0/20
- switchport access vlan 10
- switchport mode access
-!
-interface FastEthernet0/21
  switchport access vlan 10
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,20
  switchport mode trunk
 !
+interface FastEthernet0/21
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 2 mode active
+!
 interface FastEthernet0/22
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10
  switchport mode trunk
+ channel-group 2 mode active
 !
 interface FastEthernet0/23
  switchport trunk encapsulation dot1q
@@ -153,8 +176,8 @@ interface Vlan20
  ip address 10.1.123.5 255.255.255.0
 !
 ip classless
-ip http server
-ip http secure-server
+no ip http server
+no ip http secure-server
 !
 !
 access-list 1 permit 10.1.123.0 0.0.0.255

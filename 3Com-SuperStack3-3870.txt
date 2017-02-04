@@ -167,10 +167,18 @@ bridge port lacpState 1:45 enable
 bridge port lacpState 1:46 enable
 bridge port lacpState 1:47 enable
 bridge port lacpState 1:48 enable
+bridge port lacpState 1:43 enable
+bridge port lacpState 1:44 enable
+bridge port lacpState 1:5 enable
+bridge port lacpState 1:6 enable
 bridge linkaggregation modify addPort AL1 1:45
 bridge linkaggregation modify addPort AL1 1:46
 bridge linkaggregation modify addPort AL1 1:47
 bridge linkaggregation modify addPort AL1 1:48
+bridge linkaggregation modify addPort AL2 1:43
+bridge linkaggregation modify addPort AL2 1:44
+bridge linkaggregation modify addPort AL3 1:5
+bridge linkaggregation modify addPort AL3 1:6
 
 #--------------------------------------------------------------
 #  BRIDGE PORT MSTPCOST  SECTION
