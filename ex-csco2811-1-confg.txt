@@ -68,6 +68,7 @@ archive
 !
 !
 interface FastEthernet0/0
+ description "external port"
  ip address 192.168.0.215 255.255.255.0
  ip nat outside
  ip virtual-reassembly
@@ -84,7 +85,7 @@ interface FastEthernet0/1.10
  ip address 10.1.124.1 255.255.255.0
  ip nat inside
  ip virtual-reassembly
- vrrp 10 description external
+ vrrp 10 description production
  vrrp 10 ip 10.1.124.3
  vrrp 10 authentication cisco
 !
@@ -115,6 +116,9 @@ interface FastEthernet0/1/0
 !
 ip forward-protocol nd
 ip route 0.0.0.0 0.0.0.0 192.168.0.1
+!
+!
+ip classless
 no ip http server
 no ip http secure-server
 !
@@ -124,8 +128,11 @@ ip nat inside source static tcp 10.1.123.8 443 192.168.0.215 8443 redundancy man
 ip nat inside source static tcp 10.1.123.9 443 192.168.0.215 9443 redundancy management extendable
 ip nat inside source static tcp 10.1.123.11 22 192.168.0.215 11022 redundancy management extendable
 !
+! vty ACL
 access-list 1 permit 10.1.123.0 0.0.0.255
 access-list 1 deny   any
+!
+! NAT Arbitary ACL
 access-list 2 permit 10.1.123.0 0.0.0.255
 access-list 2 permit 10.1.124.0 0.0.0.255
 !
