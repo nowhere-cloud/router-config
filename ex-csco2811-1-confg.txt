@@ -58,7 +58,7 @@ voice-card 0
 archive
  log config
   hidekeys
-! 
+!
 !
 !
 !
@@ -120,9 +120,9 @@ no ip http secure-server
 !
 !
 ip nat inside source list 2 interface FastEthernet0/0 overload
-ip nat inside source static tcp 10.1.123.9 443 interface FastEthernet0/0 9443
-ip nat inside source static tcp 10.1.123.8 443 interface FastEthernet0/0 8443
-ip nat inside source static tcp 10.1.123.9 22 interface FastEthernet0/0 9022
+ip nat inside source static tcp 10.1.123.8 443 192.168.0.215 8443 redundancy management extendable
+ip nat inside source static tcp 10.1.123.9 443 192.168.0.215 9443 redundancy management extendable
+ip nat inside source static tcp 10.1.123.11 22 192.168.0.215 11022 redundancy management extendable
 !
 access-list 1 permit 10.1.123.0 0.0.0.255
 access-list 1 deny   any
