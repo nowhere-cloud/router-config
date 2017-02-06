@@ -139,13 +139,13 @@ interface FastEthernet0/21
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10
  switchport mode trunk
- channel-group 2 mode active
+ channel-group 2 mode passive
 !
 interface FastEthernet0/22
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10
  switchport mode trunk
- channel-group 2 mode active
+ channel-group 2 mode passive
 !
 interface FastEthernet0/23
  switchport trunk encapsulation dot1q

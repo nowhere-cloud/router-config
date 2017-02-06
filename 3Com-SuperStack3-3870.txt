@@ -40,11 +40,14 @@ bridge vlan create 30 Storage
 #  BRIDGE VLAN MODIFY  SECTION
 #--------------------------------------------------------------
 bridge vlan modify name 1 "VLAN 1"
-bridge vlan modify addPort 10 1:5-42 untagged
+bridge vlan modify name 10 "Production"
+bridge vlan modify name 20 "Management"
+bridge vlan modify name 30 "Storage"
+bridge vlan modify addPort 10 1:7-42 untagged
 bridge vlan modify addPort 10 1:43-48 tagged
 bridge vlan modify addPort 20 1:1,1:3 untagged
 bridge vlan modify addPort 20 1:2,1:4 tagged
-bridge vlan modify addPort 30 1:5-6 tagged
+bridge vlan modify addPort 30 1:5-6 untagged
 bridge vlan modify addPort 30 1:43-48 tagged
 
 #--------------------------------------------------------------
@@ -174,17 +177,9 @@ bridge port lacpState 1:43 enable
 bridge port lacpState 1:44 enable
 bridge port lacpState 1:5 enable
 bridge port lacpState 1:6 enable
-# to HP
-bridge linkaggregation modify addPort AL1 1:45
-bridge linkaggregation modify addPort AL1 1:46
-bridge linkaggregation modify addPort AL1 1:47
-bridge linkaggregation modify addPort AL1 1:48
-# to 3560-2
-bridge linkaggregation modify addPort AL2 1:43
-bridge linkaggregation modify addPort AL2 1:44
 # to NAS
-bridge linkaggregation modify addPort AL3 1:5
-bridge linkaggregation modify addPort AL3 1:6
+bridge linkaggregation modify addPort AL1 1:5
+bridge linkaggregation modify addPort AL1 1:6
 
 #--------------------------------------------------------------
 #  BRIDGE PORT MSTPCOST  SECTION

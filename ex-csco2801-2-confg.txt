@@ -102,7 +102,6 @@ no ip http secure-server
 ip nat inside source list 2 interface FastEthernet0/0 overload
 ip nat inside source static tcp 10.1.123.8 8023 192.168.0.216 8023 redundancy management extendable
 ip nat inside source static tcp 10.1.123.8 443 192.168.0.216 8443 redundancy management extendable
-ip nat inside source static tcp 10.1.123.9 443 192.168.0.216 9443 redundancy management extendable
 ip nat inside source static tcp 10.1.123.11 22 192.168.0.216 11022 redundancy management extendable
 !
 ! vty ACL
