@@ -2,8 +2,11 @@
 
 hostname "dc-hpProCurve-1"
 module 1 type J9147A
+; Downlink to 3Com
 trunk 45-48 Trk1 LACP
+; Uplink to CSCO 3560 1
 trunk 43-44 Trk2 LACP
+; Downlink to DL380
 trunk 5-6 Trk3 LACP
 vlan 1
    name "DEFAULT_VLAN"
@@ -22,6 +25,10 @@ vlan 20
    untagged 1,3
    ip address 10.1.123.6 255.255.255.0
    tagged 2,4
+   exit
+vlan 30
+   name "Storage"
+   tagged Trk1,Trk3
    exit
 fault-finder bad-driver sensitivity high
 fault-finder bad-transceiver sensitivity high
