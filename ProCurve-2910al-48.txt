@@ -2,21 +2,18 @@
 
 hostname "dc-hpProCurve-1"
 module 1 type J9147A
-; Downlink to 3Com
 trunk 45-48 Trk1 LACP
-; Uplink to CSCO 3560 1
 trunk 43-44 Trk2 LACP
-; Downlink to DL380
 trunk 5-6 Trk3 LACP
 vlan 1
    name "DEFAULT_VLAN"
-   no untagged 1-4,7-42,Trk1,Trk2,Trk3
+   no untagged 1-4,7-42,Trk1-Trk3
    no ip address
    exit
 vlan 10
    name "Production"
-   untagged 7-42,Trk3
-   tagged Trk1,Trk2
+   untagged 7-42
+   tagged Trk1-Trk3
    no ip address
    exit
 vlan 20
@@ -27,19 +24,29 @@ vlan 20
    exit
 vlan 30
    name "Storage"
+   ip address 10.1.133.6 255.255.255.0
    tagged Trk1,Trk3
    exit
-fault-finder bad-driver sensitivity high
-fault-finder bad-transceiver sensitivity high
-fault-finder bad-cable sensitivity high
-fault-finder too-long-cable sensitivity high
-fault-finder over-bandwidth sensitivity high
-fault-finder broadcast-storm sensitivity high
-fault-finder loss-of-link sensitivity high
-fault-finder duplex-mismatch-HDx sensitivity high
-fault-finder duplex-mismatch-FDx sensitivity high
 snmp-server community "public" unrestricted
 spanning-tree
-spanning-tree Trk1 priority 4
-spanning-tree Trk2 priority 4
-spanning-tree Trk3 priority 4
+spanning-tree Trk1 priority 0
+spanning-tree Trk2 priority 7
+spanning-tree Trk3 priority 15
+spanning-tree config-name "nowhere"
+spanning-tree config-revision 1
+spanning-tree instance 1 vlan 10
+spanning-tree instance 1 2 priority 15
+spanning-tree instance 1 4 priority 15
+spanning-tree instance 1 Trk1 priority 0
+spanning-tree instance 1 Trk2 priority 7
+spanning-tree instance 1 Trk3 priority 15
+spanning-tree instance 2 vlan 20
+spanning-tree instance 2 2 priority 0
+spanning-tree instance 2 4 priority 4
+spanning-tree instance 2 Trk1 priority 15
+spanning-tree instance 2 Trk2 priority 15
+spanning-tree instance 2 Trk3 priority 15
+spanning-tree instance 3 vlan 30
+spanning-tree instance 3 Trk1 priority 0
+spanning-tree instance 3 Trk2 priority 7
+spanning-tree instance 3 Trk3 priority 15

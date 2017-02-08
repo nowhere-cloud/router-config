@@ -19,21 +19,31 @@ ip subnet-zero
 !
 !
 no file verify auto
-spanning-tree mode pvst
+!
+spanning-tree mode mst
 spanning-tree extend system-id
+!
+spanning-tree mst configuration
+ name nowhere
+ revision 1
+ instance 1 vlan 10
+ instance 2 vlan 20
+ instance 3 vlan 30
+!
 !
 vlan internal allocation policy ascending
 !
 !
 interface Port-channel1
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
 !
 interface Port-channel2
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
+ spanning-tree mst pre-standard
 !
 interface FastEthernet0/1
  switchport access vlan 20
@@ -54,6 +64,7 @@ interface FastEthernet0/4
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 20
  switchport mode trunk
+ spanning-tree mst pre-standard
 !
 interface FastEthernet0/5
  switchport access vlan 10
@@ -137,25 +148,27 @@ interface FastEthernet0/20
 !
 interface FastEthernet0/21
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
- channel-group 2 mode passive
+ channel-group 2 mode active
+ spanning-tree mst pre-standard
 !
 interface FastEthernet0/22
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
- channel-group 2 mode passive
+ channel-group 2 mode active
+ spanning-tree mst pre-standard
 !
 interface FastEthernet0/23
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
 !
 interface FastEthernet0/24
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10
+ switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
 !
