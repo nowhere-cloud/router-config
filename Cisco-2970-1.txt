@@ -35,6 +35,7 @@ interface Port-channel1
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,30
  switchport mode trunk
+ spanning-tree mst 3 port-priority 64
 !
 interface Port-channel2
  switchport trunk encapsulation dot1q
@@ -155,30 +156,30 @@ interface GigabitEthernet0/21
  switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
+ spanning-tree mst 3 port-priority 64
 !
 interface GigabitEthernet0/22
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
+ spanning-tree mst 3 port-priority 64
 !
 interface GigabitEthernet0/23
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
+ spanning-tree mst 3 port-priority 64
 !
 interface GigabitEthernet0/24
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,30
  switchport mode trunk
  channel-group 1 mode active
+ spanning-tree mst 3 port-priority 64
 !
 interface Vlan1
- no ip address
- no ip route-cache
-!
-interface Vlan10
  no ip address
  no ip route-cache
 !
@@ -190,7 +191,7 @@ interface Vlan30
  no ip address
  no ip route-cache
 !
-ip http server
+no ip http server
 access-list 1 permit 10.1.123.0 0.0.0.255
 access-list 1 deny   any
 !

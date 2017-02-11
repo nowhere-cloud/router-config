@@ -3,12 +3,13 @@
 version 12.2
 no service pad
 service timestamps debug uptime
-service timestamps log uptime
+service timestamps log datetime
 no service password-encryption
+service sequence-numbers
 !
 hostname ext-Csco3560-1
 !
-enable secret 5 $1$Fvwv$zX41wygj8KRQBqSyZ6pmj.
+enable secret 5 $1$2qxT$wUlVJBJ4i0G.w1t3iHnfV/
 !
 no aaa new-model
 ip subnet-zero

@@ -3,8 +3,9 @@
 version 12.2
 no service pad
 service timestamps debug uptime
-service timestamps log uptime
+service timestamps log datetime
 no service password-encryption
+service sequence-numbers
 !
 hostname ext-Csco3560-2
 !

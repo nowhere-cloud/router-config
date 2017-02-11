@@ -64,6 +64,8 @@ archive
 !
 !
 !
+track 2 interface FastEthernet0/0 line-protocol
+!
 !
 !
 !
@@ -119,10 +121,7 @@ interface FastEthernet0/1/0
  speed auto
 !
 ip forward-protocol nd
-ip classless
-ip route 0.0.0.0 0.0.0.0 192.168.0.1
-!
-!
+ip route 0.0.0.0 0.0.0.0 FastEthernet0/0
 no ip http server
 no ip http secure-server
 !
@@ -132,17 +131,19 @@ ip nat inside source static tcp 10.1.123.8 8023 192.168.0.215 8023 redundancy ma
 ip nat inside source static tcp 10.1.123.8 443 192.168.0.215 8443 redundancy management extendable
 ip nat inside source static tcp 10.1.123.11 22 192.168.0.215 11022 redundancy management extendable
 !
-! vty ACL
+access-list 1 remark telnet-security
 access-list 1 permit 10.1.123.0 0.0.0.255
-access-list 1 deny   any
 !
-! NAT Arbitary ACL
+access-list 2 remark NAT
 access-list 2 permit 10.1.113.0 0.0.0.255
 access-list 2 permit 10.1.123.0 0.0.0.255
 !
 !
-! Tracking for uplink detection
-track 2 interface FastEthernet 0/0 line-protocol
+!
+!
+route-map security-novlan10-to-vlan20 permit 10
+ match interface FastEthernet0/1.10
+ set ip next-hop 192.168.0.1
 !
 !
 !
