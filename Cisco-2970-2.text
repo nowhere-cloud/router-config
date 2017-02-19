@@ -3,10 +3,11 @@
 version 12.2
 no service pad
 service timestamps debug uptime
-service timestamps log uptime
-no service password-encryption
+service timestamps log datetime
+service password-encryption
+service sequence-numbers
 !
-hostname dc-Csco2970-1
+hostname dc-Csco2970-2
 !
 enable secret 5 $1$Fvwv$zX41wygj8KRQBqSyZ6pmj.
 !
@@ -183,8 +184,12 @@ interface Vlan1
  no ip address
  no ip route-cache
 !
+interface Vlan10
+ no ip address
+ no ip route-cache
+!
 interface Vlan20
- ip address 10.1.123.6 255.255.255.0
+ ip address 10.1.123.7 255.255.255.0
  no ip route-cache
 !
 interface Vlan30
@@ -201,7 +206,7 @@ control-plane
 line con 0
 line vty 0 4
  access-class 1 in
- password cisco
+ password 7 030752180500
  login
 line vty 5 15
  no login

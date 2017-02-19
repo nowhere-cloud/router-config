@@ -1,9 +1,8 @@
-
 !
 version 12.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
-no service password-encryption
+service password-encryption
 !
 hostname ex-CSCO2801-2
 !
@@ -40,8 +39,6 @@ voice-card 0
 !
 !
 !
-!
-track 2 interface FastEthernet0/0 line-protocol
 !
 !
 !
@@ -93,22 +90,21 @@ interface Serial0/2/1
  clock rate 125000
 !
 ip forward-protocol nd
-ip route 0.0.0.0 0.0.0.0 FastEthernet0/0
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
 !
 !
 no ip http server
 no ip http secure-server
 ip nat inside source list 2 interface FastEthernet0/0 overload
-ip nat inside source static tcp 10.1.123.8 8023 192.168.0.216 8023 redundancy management extendable
-ip nat inside source static tcp 10.1.123.8 443 192.168.0.216 8443 redundancy management extendable
-ip nat inside source static tcp 10.1.123.11 22 192.168.0.216 11022 redundancy management extendable
+ip nat inside source static tcp 10.1.123.8 8023 192.168.0.216 8023 extendable
+ip nat inside source static tcp 10.1.123.8 443 192.168.0.216 8443 extendable
+ip nat inside source static tcp 10.1.123.11 22 192.168.0.216 11022 extendable
 !
 access-list 1 remark telnet-security
 access-list 1 permit 10.1.123.0 0.0.0.255
-!
-access-list 2 remark NAT
 access-list 2 permit 10.1.113.0 0.0.0.255
 access-list 2 permit 10.1.123.0 0.0.0.255
+access-list 2 remark NAT
 !
 route-map security-novlan10-to-vlan20 permit 10
  match interface FastEthernet0/1.10
@@ -131,7 +127,7 @@ line con 0
 line aux 0
 line vty 0 4
  access-class 1 in
- password cisco
+ password 7 13061E010803
  login
 !
 scheduler allocate 20000 1000

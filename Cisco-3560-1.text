@@ -1,15 +1,12 @@
-
 !
 version 12.2
 no service pad
 service timestamps debug uptime
 service timestamps log datetime
-no service password-encryption
+service password-encryption
 service sequence-numbers
 !
-hostname ext-Csco3560-2
-!
-enable secret 5 $1$Fvwv$zX41wygj8KRQBqSyZ6pmj.
+hostname ext-Csco3560-1
 !
 no aaa new-model
 ip subnet-zero
@@ -75,6 +72,7 @@ interface FastEthernet0/5
 interface FastEthernet0/6
  switchport access vlan 10
  switchport mode access
+ switchport block multicast
  spanning-tree portfast
 !
 interface FastEthernet0/7
@@ -186,7 +184,7 @@ interface Vlan10
  no ip address
 !
 interface Vlan20
- ip address 10.1.123.5 255.255.255.0
+ ip address 10.1.123.4 255.255.255.0
 !
 ip classless
 no ip http server
@@ -202,7 +200,7 @@ control-plane
 line con 0
 line vty 0 4
  access-class 1 in
- password cisco
+ password 7 110A1016141D
  login
 line vty 5 15
  no login
