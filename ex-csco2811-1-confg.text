@@ -127,6 +127,7 @@ ip nat inside source list 2 interface FastEthernet0/0 overload
 ip nat inside source static tcp 10.1.123.8 8023 192.168.0.215 8023 extendable
 ip nat inside source static tcp 10.1.123.8 443 192.168.0.215 8443 extendable
 ip nat inside source static tcp 10.1.123.11 22 192.168.0.215 11022 extendable
+ip nat inside source static tcp 10.1.123.11 80 192.168.0.214 80 extendable
 !
 access-list 1 remark telnet-security
 access-list 1 permit 10.1.123.0 0.0.0.255
